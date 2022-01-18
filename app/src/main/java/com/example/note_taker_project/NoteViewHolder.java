@@ -20,6 +20,9 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         deleteButton.setOnClickListener(v -> {
             onClickListener.onDeleteNote(note);
         });
+        itemView.setOnClickListener(v -> {
+            onClickListener.onClickNote(note);
+        });
     }
 
     public void bind(Note note) {

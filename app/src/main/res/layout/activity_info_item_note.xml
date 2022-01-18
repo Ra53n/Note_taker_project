@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500sp"
+    android:layout_height="700sp"
     android:layout_margin="8dp"
     app:cardBackgroundColor="#F3F2B2"
     app:cardCornerRadius="24dp"
@@ -35,9 +35,9 @@
             tools:text="Всем привет! Как дела?\n Все хорошо" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="150sp">
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:layout_marginVertical="500sp">
 
             <Button
                 android:id="@+id/delete_button"

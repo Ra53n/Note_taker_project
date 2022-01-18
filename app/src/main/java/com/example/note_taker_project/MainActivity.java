@@ -6,10 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final NoteRepository noteRepository = new CacheNoteRepositoryImpl();
@@ -26,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new NoteAdapter();
         adapter.setData(noteRepository.getNotes());
-        adapter.setOnDeleteClickListener(new NoteListener());
+        adapter.setOnClickListener(new NoteListener());
         recyclerView.setAdapter(adapter);
     }
 
@@ -40,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClickNote(Note note) {
+            Intent intent = new Intent(MainActivity.this, InfoItemNoteActivity.class);
+            intent.putExtra(InfoItemNoteActivity.NOTE_EXTRA_KEY,note);
+            startActivity(intent);
         }
     }
 }

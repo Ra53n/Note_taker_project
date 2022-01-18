@@ -15,7 +15,7 @@ public class Note implements Parcelable {
         id = in.readString();
         noteName = in.readString();
         noteText = in.readString();
-        noteDate = new Date(Long.parseLong(in.readString()) * 1000);
+        noteDate = new Date(in.readString());
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {

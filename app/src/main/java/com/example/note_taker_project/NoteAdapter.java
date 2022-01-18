@@ -16,7 +16,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     private OnNoteListener onClickListener;
 
 
-    public void setOnDeleteClickListener(OnNoteListener onClickListener) {
+    public void setOnClickListener(OnNoteListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 
