@@ -1,4 +1,4 @@
-package com.example.note_taker_project;
+package com.example.note_taker_project.UI;
 
 import android.view.View;
 import android.widget.Button;
@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.note_taker_project.Domain.Note;
+import com.example.note_taker_project.R;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
     private final TextView noteNameTextView = itemView.findViewById(R.id.note_name_textview);

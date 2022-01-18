@@ -1,9 +1,10 @@
-package com.example.note_taker_project;
+package com.example.note_taker_project.Data;
 
-import java.sql.Time;
+import com.example.note_taker_project.Domain.NoteRepository;
+import com.example.note_taker_project.Domain.Note;
+
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class CacheNoteRepositoryImpl implements NoteRepository {
     private ArrayList<Note> cache = new ArrayList<>();
@@ -26,9 +27,33 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
         }
     }
 
+
     @Override
     public void addNote(Note note) {
 
+    }
+
+    @Override
+    public void saveNote(Note oldNote, Note newNote) {
+        try {
+            int index = findPosition(oldNote);
+            this.cache.set(index, newNote);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int findPosition(Note note) {
+        try {
+            for (Note n : cache) {
+                if (n.getId().equals(note.getId())) {
+                    return cache.indexOf(n);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     private ArrayList<Note> createSomeNotes() {

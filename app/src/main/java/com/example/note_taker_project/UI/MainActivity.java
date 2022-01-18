@@ -1,4 +1,4 @@
-package com.example.note_taker_project;
+package com.example.note_taker_project.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,10 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.note_taker_project.Data.CacheNoteRepositoryImpl;
+import com.example.note_taker_project.Domain.Note;
+import com.example.note_taker_project.Domain.NoteRepository;
+import com.example.note_taker_project.R;
+
 public class MainActivity extends AppCompatActivity {
-    private final NoteRepository noteRepository = new CacheNoteRepositoryImpl();
+    protected static NoteRepository noteRepository = new CacheNoteRepositoryImpl();
     private RecyclerView recyclerView;
-    private NoteAdapter adapter;
+    protected static NoteAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClickNote(Note note) {
             Intent intent = new Intent(MainActivity.this, InfoItemNoteActivity.class);
-            intent.putExtra(InfoItemNoteActivity.NOTE_EXTRA_KEY,note);
+            intent.putExtra(InfoItemNoteActivity.NOTE_EXTRA_KEY, note);
             startActivity(intent);
         }
     }

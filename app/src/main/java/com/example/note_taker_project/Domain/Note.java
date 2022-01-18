@@ -1,4 +1,4 @@
-package com.example.note_taker_project;
+package com.example.note_taker_project.Domain;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,6 +10,10 @@ public class Note implements Parcelable {
     private String noteName;
     private String noteText;
     private Date noteDate;
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     protected Note(Parcel in) {
         id = in.readString();

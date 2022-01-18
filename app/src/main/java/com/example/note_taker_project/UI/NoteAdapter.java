@@ -1,4 +1,4 @@
-package com.example.note_taker_project;
+package com.example.note_taker_project.UI;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.note_taker_project.Domain.Note;
+import com.example.note_taker_project.R;
 
 import java.util.ArrayList;
 import java.util.List;
