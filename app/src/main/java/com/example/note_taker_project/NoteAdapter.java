@@ -13,12 +13,19 @@ import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     private ArrayList<Note> data;
+    private OnNoteListener onClickListener;
 
-    public void setData(List<Note> notesList){
-        data = (ArrayList<Note>) notesList;
+
+    public void setOnDeleteClickListener(OnNoteListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
-    public Note getNote(int position){
+    public void setData(List<Note> notesList) {
+        data = (ArrayList<Note>) notesList;
+        notifyDataSetChanged();
+    }
+
+    public Note getNote(int position) {
         return data.get(position);
     }
 
@@ -26,16 +33,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View itemView = inflater.inflate(R.layout.item_note,parent,false);
-        return new NoteViewHolder(itemView);
+        final View itemView = inflater.inflate(R.layout.item_note, parent, false);
+        return new NoteViewHolder(itemView, onClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         final Note note = getNote(position);
-        holder.noteNameTextView.setText(note.getNoteName());
-        holder.noteTextTextView.setText(note.getNoteText());
-        holder.noteDateTextView.setText(note.getNoteDate().toString());
+        holder.bind(note);
     }
 
 

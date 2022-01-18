@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CacheNoteRepositoryImpl implements NoteRepository{
+public class CacheNoteRepositoryImpl implements NoteRepository {
     private ArrayList<Note> cache = new ArrayList<>();
 
     public CacheNoteRepositoryImpl() {
@@ -19,7 +19,11 @@ public class CacheNoteRepositoryImpl implements NoteRepository{
 
     @Override
     public void deleteNote(Note note) {
-
+        try {
+            this.cache.remove(note);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -27,10 +31,14 @@ public class CacheNoteRepositoryImpl implements NoteRepository{
 
     }
 
-    private ArrayList<Note> createSomeNotes(){
+    private ArrayList<Note> createSomeNotes() {
         final ArrayList<Note> notes = new ArrayList<>();
-        notes.add(new Note("0","Привет!","Всем привет!",new Date(System.currentTimeMillis())));
-        notes.add(new Note("1","ПОКА!","Всем ПОКА!",new Date(System.currentTimeMillis())));
+        notes.add(new Note("0", "Привет!", "Всем привет!", new Date(System.currentTimeMillis())));
+        notes.add(new Note("1", "ПОКА!", "Всем ПОКА!", new Date(System.currentTimeMillis())));
+        notes.add(new Note("2", "Привет!", "Всем привет!", new Date(System.currentTimeMillis())));
+        notes.add(new Note("3", "ПОКА!", "Всем ПОКА!", new Date(System.currentTimeMillis())));
+        notes.add(new Note("4", "Привет!", "Всем привет!", new Date(System.currentTimeMillis())));
+        notes.add(new Note("5", "ПОКА!", "Всем ПОКА!", new Date(System.currentTimeMillis())));
         return notes;
     }
 }

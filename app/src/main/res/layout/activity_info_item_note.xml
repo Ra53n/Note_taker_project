@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="500sp"
     android:layout_margin="8dp"
     app:cardBackgroundColor="#F3F2B2"
     app:cardCornerRadius="24dp"
@@ -12,11 +12,11 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/note_name_textview"
+            android:id="@+id/info_note_name_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -25,7 +25,7 @@
             tools:text="Название" />
 
         <TextView
-            android:id="@+id/note_text_textview"
+            android:id="@+id/info_note_text_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -35,18 +35,19 @@
             tools:text="Всем привет! Как дела?\n Все хорошо" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="150sp">
 
             <Button
                 android:id="@+id/delete_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="delete" />
+                android:text="edit" />
 
             <TextView
-                android:id="@+id/note_date_textview"
+                android:id="@+id/info_note_date_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12sp"

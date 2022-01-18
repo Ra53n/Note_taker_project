@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,6 +26,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new NoteAdapter();
         adapter.setData(noteRepository.getNotes());
+        adapter.setOnDeleteClickListener(new NoteListener());
         recyclerView.setAdapter(adapter);
+    }
+
+    private class NoteListener implements OnNoteListener {
+
+        @Override
+        public void onDeleteNote(Note note) {
+            noteRepository.deleteNote(note);
+            adapter.setData(noteRepository.getNotes());
+        }
+
+        @Override
+        public void onClickNote(Note note) {
+        }
     }
 }
