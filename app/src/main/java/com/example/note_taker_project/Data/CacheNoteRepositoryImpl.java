@@ -14,7 +14,7 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
     }
 
     public ArrayList<Note> getNotes() {
-        return cache;
+        return new ArrayList<>(cache);
     }
 
 
