@@ -7,15 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.note_taker_project.App;
 import com.example.note_taker_project.Data.CacheNoteRepositoryImpl;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.Domain.NoteRepository;
 import com.example.note_taker_project.R;
 
 public class MainActivity extends AppCompatActivity {
-    protected static NoteRepository noteRepository = new CacheNoteRepositoryImpl();
     private RecyclerView recyclerView;
-    protected static NoteAdapter adapter;
+    private NoteAdapter adapter;
+    private NoteRepository noteRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new NoteAdapter();
+        adapter = App.get().adapter;
+        noteRepository = App.get().noteRepository;
         adapter.setData(noteRepository.getNotes());
         adapter.setOnClickListener(new NoteListener());
         recyclerView.setAdapter(adapter);

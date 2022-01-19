@@ -34,4 +34,6 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         noteTextTextView.setText(note.getNoteText());
         noteDateTextView.setText(note.getNoteDate().toString());
     }
+
+
 }
