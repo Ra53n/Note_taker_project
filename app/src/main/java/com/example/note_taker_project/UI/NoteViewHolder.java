@@ -12,7 +12,7 @@ import com.example.note_taker_project.R;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
     private final TextView noteNameTextView = itemView.findViewById(R.id.note_name_textview);
-    private final TextView noteTextTextView = itemView.findViewById(R.id.note_text_textview);
+    private final TextView noteTextTextView = itemView.findViewById(R.id.note_content_textview);
     private final TextView noteDateTextView = itemView.findViewById(R.id.note_date_textview);
     private final Button deleteButton = itemView.findViewById(R.id.delete_button);
 

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="700sp"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="#F3F2B2"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="10dp"
-    app:contentPadding="8dp">
+    android:layout_height="@dimen/info_note_card_view_layout_height"
+    android:layout_margin="@dimen/info_note_card_view_layout_margin"
+    app:cardBackgroundColor="@color/yellow"
+    app:cardCornerRadius="@dimen/note_card_view_card_corner_radius"
+    app:cardElevation="@dimen/note_card_view_card_elevation"
+    app:contentPadding="@dimen/note_card_view_content_padding">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -17,21 +17,16 @@
 
         <EditText
             android:id="@+id/info_note_name_textview"
+            style="@style/note_name_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
             tools:text="Название" />
 
         <EditText
             android:id="@+id/info_note_text_textview"
+            style="@style/note_content_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textAlignment="viewStart"
-            android:textColor="@color/black"
-            android:textSize="16sp"
             tools:text="Всем привет! Как дела?\n Все хорошо" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -41,19 +36,16 @@
 
             <Button
                 android:id="@+id/save_button"
+                style="@style/save_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:text="save" />
+                android:layout_margin="@dimen/save_button_layout_margin" />
 
             <TextView
                 android:id="@+id/info_note_date_textview"
+                style="@style/note_date_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="12sp"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/black"
-                android:textSize="12sp"
                 tools:text="16.12.21" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
