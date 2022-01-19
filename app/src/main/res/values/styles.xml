@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="note_name_textview">
+        <item name="android:padding">@dimen/note_name_textview_padding</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/note_name_textview_text_size</item>
+    </style>
+
+    <style name="note_content_textview">
+        <item name="android:padding">@dimen/note_content_textview_padding</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="delete_button">
+        <item name="android:backgroundTint">@color/yellow</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:text">@string/delete_button_text</item>
+    </style>
+
+    <style name="note_date_textview">
+        <item name="android:padding">@dimen/note_date_textview_padding</item>
+        <item name="android:textAlignment">viewEnd</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/note_date_textview_text_size</item>
+    </style>
+
+    <style name="save_button">
+        <item name="android:backgroundTint">@color/green</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/save_button_text</item>
+    </style>
+</resources>

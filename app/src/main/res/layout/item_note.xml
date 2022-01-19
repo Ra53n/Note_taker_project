@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/note_card_view_layout_margin"
+    app:cardBackgroundColor="@color/yellow"
+    app:cardCornerRadius="@dimen/note_card_view_card_corner_radius"
+    app:cardElevation="@dimen/note_card_view_card_elevation"
+    app:contentPadding="@dimen/note_card_view_content_padding">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/note_name_textview"
+                style="@style/note_name_textview"
+                android:layout_width="@dimen/note_name_textview_layout_width"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/note_name_textview_layout_marginVerical"
+                tools:text="Название" />
+
+            <Button
+                android:id="@+id/delete_button"
+                style="@style/delete_button"
+                android:layout_width="@dimen/delete_button_layout_width"
+                android:layout_height="@dimen/delete_button_layout_height"
+                android:layout_marginHorizontal="@dimen/delete_button_layout_marginHorizontal" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/note_content_textview"
+            style="@style/note_content_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Всем привет! Как дела?\n Все хорошо" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/note_date_textview"
+                style="@style/note_date_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="16.12.21" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>
