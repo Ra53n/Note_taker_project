@@ -10,4 +10,7 @@ public interface NoteRepository {
     void addNote(Note note);
 
     void saveNote(Note oldNote, Note newNote);
+
+    int getNotePosition(Note note);
+
 }

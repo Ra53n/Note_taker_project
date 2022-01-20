@@ -32,4 +32,10 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:text">@string/save_button_text</item>
     </style>
+
+    <style name="add_button">
+        <item name="android:backgroundTint">@color/green</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/add_button_text</item>
+    </style>
 </resources>

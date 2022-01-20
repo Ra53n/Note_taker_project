@@ -30,7 +30,7 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
 
     @Override
     public void addNote(Note note) {
-
+        cache.add(note);
     }
 
     @Override
@@ -41,6 +41,17 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
         } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public int getNotePosition(Note note) {
+        String noteId = note.getId();
+        for(Note notes : cache){
+            if(notes.getId().equals(noteId)){
+                return cache.indexOf(notes);
+            }
+        }
+        return -1;
     }
 
     private int findPosition(Note note) {
