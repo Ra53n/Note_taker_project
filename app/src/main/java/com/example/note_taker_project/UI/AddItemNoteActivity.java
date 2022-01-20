@@ -33,12 +33,12 @@ public class AddItemNoteActivity extends AppCompatActivity {
 
     }
 
-    private void addNote(){
+    private void addNote() {
         Note note = new Note();
         note.setNoteName(nameTextView.getText().toString());
         note.setNoteText(contentTextView.getText().toString());
         note.setNoteDate(new Date(System.currentTimeMillis()));
-        note.setId(String.valueOf(App.get().noteRepository.getNotes().size()+1));
+        note.setId(String.valueOf(App.get().noteRepository.getNotes().size() + 1));
         App.get().noteRepository.addNote(note);
         App.get().adapter.setData(App.get().noteRepository.getNotes());
         App.get().adapter.notifyDataSetChanged();

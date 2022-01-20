@@ -1,10 +1,11 @@
 package com.example.note_taker_project.UI;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -27,35 +28,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        noteListener = new NoteListener();
+        noteListener = new NoteListener(this);
         initRecycler();
         addButton = findViewById(R.id.main_activity_add_button);
         addButton.setOnClickListener(v -> {
             noteListener.onAddNote();
         });
-
-    }
-
-    private class NoteListener implements OnNoteListener {
-
-        @Override
-        public void onDeleteNote(Note note) {
-            noteRepository.deleteNote(note);
-            adapter.setDataWithRemoveItem(noteRepository.getNotes(), noteRepository.getNotePosition(note));
-        }
-
-        @Override
-        public void onClickNote(Note note) {
-            Intent intent = new Intent(MainActivity.this, InfoItemNoteActivity.class);
-            intent.putExtra(InfoItemNoteActivity.NOTE_EXTRA_KEY, note);
-            startActivity(intent);
-        }
-
-        @Override
-        public void onAddNote() {
-            Intent intent = new Intent(MainActivity.this, AddItemNoteActivity.class);
-            startActivity(intent);
-        }
 
     }
 
@@ -66,6 +44,21 @@ public class MainActivity extends AppCompatActivity {
         noteRepository = App.get().noteRepository;
         adapter.setData(noteRepository.getNotes());
         adapter.setOnClickListener(noteListener);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
     }
+
+    private final ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+            int index = viewHolder.getAdapterPosition();
+            noteRepository.deleteNote(noteRepository.getNotes().get(index));
+            adapter.setDataWithRemoveItem(noteRepository.getNotes(), index);
+        }
+    };
 }

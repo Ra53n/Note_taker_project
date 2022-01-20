@@ -46,8 +46,8 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
     @Override
     public int getNotePosition(Note note) {
         String noteId = note.getId();
-        for(Note notes : cache){
-            if(notes.getId().equals(noteId)){
+        for (Note notes : cache) {
+            if (notes.getId().equals(noteId)) {
                 return cache.indexOf(notes);
             }
         }
