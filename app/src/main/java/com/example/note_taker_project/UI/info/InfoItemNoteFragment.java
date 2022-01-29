@@ -1,4 +1,4 @@
-package com.example.note_taker_project.UI.Info;
+package com.example.note_taker_project.UI.info;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
-import com.example.note_taker_project.UI.NoteListFragment;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,7 +37,7 @@ public class InfoItemNoteFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof NoteListFragment.Controller) {
+        if (context instanceof Controller) {
             controller = (Controller) context;
         } else throw new IllegalStateException("Activity must implement Controller");
     }

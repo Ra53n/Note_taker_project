@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.example.note_taker_project.Data.CacheNoteRepositoryImpl;
 import com.example.note_taker_project.Domain.NoteRepository;
-import com.example.note_taker_project.UI.NoteAdapter;
+import com.example.note_taker_project.UI.list.NoteAdapter;
 
 public class App extends Application {
     private static App sInstance;

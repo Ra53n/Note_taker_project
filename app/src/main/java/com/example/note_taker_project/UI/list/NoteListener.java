@@ -1,10 +1,10 @@
-package com.example.note_taker_project.UI;
+package com.example.note_taker_project.UI.list;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
+import com.example.note_taker_project.UI.add.AddItemNoteFragment;
 
 class NoteListener implements OnNoteListener {
 
@@ -28,8 +28,8 @@ class NoteListener implements OnNoteListener {
 
     @Override
     public void onAddNote() {
-        Intent intent = new Intent(context, AddItemNoteActivity.class);
-        context.startActivity(intent);
+        AddItemNoteFragment.Controller controller = (AddItemNoteFragment.Controller) context;
+        controller.openAddNote();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.note_taker_project.UI;
+package com.example.note_taker_project.UI.list;
 
 import android.view.View;
 import android.widget.Button;
