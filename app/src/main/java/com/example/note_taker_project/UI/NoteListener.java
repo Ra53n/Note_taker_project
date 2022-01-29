@@ -16,7 +16,7 @@ class NoteListener implements OnNoteListener {
     @Override
     public void onDeleteNote(Note note) {
         App.get().noteRepository.deleteNote(note);
-        App.get().adapter.setDataWithRemoveItem(App.get().noteRepository.getNotes(), App.get().noteRepository.getNotePosition(note));
+        App.get().adapter.deleteItem(note);
     }
 
     @Override

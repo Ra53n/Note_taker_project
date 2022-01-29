@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
             int index = viewHolder.getAdapterPosition();
-            noteRepository.deleteNote(noteRepository.getNotes().get(index));
-            adapter.setDataWithRemoveItem(noteRepository.getNotes(), index);
+            Note note = noteRepository.getNotes().get(index);
+            noteRepository.deleteNote(note);
+            adapter.deleteItem(note);
         }
     };
 }
