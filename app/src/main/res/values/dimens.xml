@@ -11,7 +11,7 @@
     <dimen name="delete_button_layout_marginHorizontal">10sp</dimen>
     <dimen name="note_card_view_layout_margin">8dp</dimen>
     <dimen name="note_card_view_card_corner_radius">24dp</dimen>
-    <dimen name="note_card_view_card_elevation">10dp</dimen>
+    <dimen name="fragment_info_item_note__card_view_card_elevation">10dp</dimen>
     <dimen name="note_card_view_content_padding">8dp</dimen>
     <dimen name="note_date_textview_padding">12sp</dimen>
     <dimen name="note_date_textview_text_size">12sp</dimen>

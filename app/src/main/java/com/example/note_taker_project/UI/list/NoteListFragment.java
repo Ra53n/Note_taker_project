@@ -51,14 +51,14 @@ public class NoteListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         noteListener = new NoteListener(getContext());
         initRecycler(view);
-        addButton = view.findViewById(R.id.main_activity_add_button);
+        addButton = view.findViewById(R.id.fragment_notes_list__add_button);
         addButton.setOnClickListener(v -> {
             noteListener.onAddNote();
         });
     }
 
     private void initRecycler(View view) {
-        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.fragment_notes_list__recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = App.get().adapter;
         noteRepository = App.get().noteRepository;

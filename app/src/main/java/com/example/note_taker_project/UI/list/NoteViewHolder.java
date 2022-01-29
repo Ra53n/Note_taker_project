@@ -11,10 +11,10 @@ import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
-    private final TextView noteNameTextView = itemView.findViewById(R.id.note_name_textview);
-    private final TextView noteTextTextView = itemView.findViewById(R.id.note_content_textview);
-    private final TextView noteDateTextView = itemView.findViewById(R.id.note_date_textview);
-    private final Button deleteButton = itemView.findViewById(R.id.delete_button);
+    private final TextView noteNameTextView = itemView.findViewById(R.id.item_note__name_textview);
+    private final TextView noteTextTextView = itemView.findViewById(R.id.item_note__content_textview);
+    private final TextView noteDateTextView = itemView.findViewById(R.id.item_note__date_textview);
+    private final Button deleteButton = itemView.findViewById(R.id.item_note__delete_button);
 
     private Note note;
 

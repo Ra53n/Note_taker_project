@@ -71,9 +71,9 @@ public class AddItemNoteFragment extends Fragment {
     }
 
     private void initViews() {
-        addButton = view.findViewById(R.id.add_button);
-        nameTextView = view.findViewById(R.id.add_note_name_textview);
-        contentTextView = view.findViewById(R.id.add_note_text_textview);
-        dateTextView = view.findViewById(R.id.add_note_date_textview);
+        addButton = view.findViewById(R.id.fragment_add_item_note__add_button);
+        nameTextView = view.findViewById(R.id.fragment_add_item_note__name_textview);
+        contentTextView = view.findViewById(R.id.fragment_add_item_note__text_textview);
+        dateTextView = view.findViewById(R.id.fragment_add_item_note__date_textview);
     }
 }

@@ -88,10 +88,10 @@ public class InfoItemNoteFragment extends Fragment {
     }
 
     private void initViews() {
-        nameTextView = view.findViewById(R.id.info_note_name_textview);
-        contentTextView = view.findViewById(R.id.info_note_text_textview);
-        dateTextView = view.findViewById(R.id.info_note_date_textview);
-        saveButton = view.findViewById(R.id.save_button);
+        nameTextView = view.findViewById(R.id.fragment_info_item_note__name_textview);
+        contentTextView = view.findViewById(R.id.fragment_info_item_note__text_textview);
+        dateTextView = view.findViewById(R.id.fragment_info_item_note__date_textview);
+        saveButton = view.findViewById(R.id.fragment_info_item_note__save_button);
     }
 
     private void setContentInTextViews() {
