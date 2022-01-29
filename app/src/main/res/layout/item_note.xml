@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -25,6 +25,8 @@
                 android:layout_width="@dimen/note_name_textview_layout_width"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/note_name_textview_layout_marginVerical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Название" />
 
             <Button
@@ -32,9 +34,11 @@
                 style="@style/delete_button"
                 android:layout_width="@dimen/delete_button_layout_width"
                 android:layout_height="@dimen/delete_button_layout_height"
-                android:layout_marginHorizontal="@dimen/delete_button_layout_marginHorizontal" />
+                android:layout_marginHorizontal="@dimen/delete_button_layout_marginHorizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/note_content_textview"

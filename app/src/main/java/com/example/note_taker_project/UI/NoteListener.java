@@ -22,9 +22,8 @@ class NoteListener implements OnNoteListener {
 
     @Override
     public void onClickNote(Note note) {
-        Intent intent = new Intent(context, InfoItemNoteActivity.class);
-        intent.putExtra(InfoItemNoteActivity.NOTE_EXTRA_KEY, note);
-        context.startActivity(intent);
+        NoteListFragment.Controller controller = (NoteListFragment.Controller) context;
+        controller.showNoteInfo(note);
     }
 
     @Override

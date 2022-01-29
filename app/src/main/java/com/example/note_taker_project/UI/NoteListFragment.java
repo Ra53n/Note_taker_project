@@ -1,5 +1,6 @@
 package com.example.note_taker_project.UI;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,20 @@ public class NoteListFragment extends Fragment {
     private NoteListener noteListener;
 
     private Button addButton;
+
+    private Controller controller;
+
+    public interface Controller {
+        void showNoteInfo(Note note);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Controller) {
+            controller = (Controller) context;
+        } else throw new IllegalStateException("Activity must implement Controller");
+    }
 
     @Nullable
     @Override
