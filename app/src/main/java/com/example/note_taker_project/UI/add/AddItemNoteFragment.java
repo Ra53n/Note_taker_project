@@ -66,7 +66,6 @@ public class AddItemNoteFragment extends Fragment {
         note.setId(String.valueOf(App.get().noteRepository.getNotes().size() + 1));
         App.get().noteRepository.addNote(note);
         App.get().adapter.setData(App.get().noteRepository.getNotes());
-        App.get().adapter.notifyDataSetChanged();
         controller.closeAddNote();
     }
 

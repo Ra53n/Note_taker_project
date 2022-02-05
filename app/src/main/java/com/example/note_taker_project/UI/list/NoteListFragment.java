@@ -27,18 +27,11 @@ public class NoteListFragment extends Fragment {
 
     private Button addButton;
 
-    private Controller controller;
-
-    public interface Controller {
-        void showNoteInfo(Note note);
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof Controller) {
-            controller = (Controller) context;
-        } else throw new IllegalStateException("Activity must implement Controller");
+
     }
 
     @Nullable

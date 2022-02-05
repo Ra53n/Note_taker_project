@@ -32,6 +32,8 @@ public class InfoItemNoteFragment extends Fragment {
 
     public interface Controller {
         void saveNoteInfo();
+
+        void showNoteInfo(Note note);
     }
 
     @Override
@@ -43,7 +45,6 @@ public class InfoItemNoteFragment extends Fragment {
     }
 
     public static InfoItemNoteFragment newInstance(Note note) {
-
         Bundle args = new Bundle();
         args.putParcelable(NOTE_ARG_KEY, note);
         InfoItemNoteFragment fragment = new InfoItemNoteFragment();
@@ -70,11 +71,9 @@ public class InfoItemNoteFragment extends Fragment {
     }
 
     private void save(Note note) {
-        ArrayList<Note> noteArrayList = new ArrayList<>();
         Note tempNote = updateNote();
         App.get().noteRepository.saveNote(note, tempNote);
-        App.get().adapter.setData(noteArrayList);
-        App.get().adapter.notifyDataSetChanged();
+        App.get().adapter.setData(App.get().noteRepository.getNotes());
         controller.saveNoteInfo();
     }
 
