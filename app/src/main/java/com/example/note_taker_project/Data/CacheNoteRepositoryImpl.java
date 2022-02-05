@@ -36,7 +36,7 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
     @Override
     public void saveNote(Note oldNote, Note newNote) {
         try {
-            int index = findPosition(oldNote);
+            int index = getNotePosition(oldNote);
             this.cache.set(index, newNote);
         } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
@@ -46,26 +46,14 @@ public class CacheNoteRepositoryImpl implements NoteRepository {
     @Override
     public int getNotePosition(Note note) {
         String noteId = note.getId();
-        for (Note notes : cache) {
-            if (notes.getId().equals(noteId)) {
-                return cache.indexOf(notes);
+        for (int i = 0; i < cache.size(); i++) {
+            if (cache.get(i).getId().equals(noteId)) {
+                return i;
             }
         }
         return -1;
     }
 
-    private int findPosition(Note note) {
-        try {
-            for (Note n : cache) {
-                if (n.getId().equals(note.getId())) {
-                    return cache.indexOf(n);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
 
     private ArrayList<Note> createSomeNotes() {
         final ArrayList<Note> notes = new ArrayList<>();

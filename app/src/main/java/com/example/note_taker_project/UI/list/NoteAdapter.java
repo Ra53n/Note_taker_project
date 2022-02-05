@@ -1,4 +1,4 @@
-package com.example.note_taker_project.UI;
+package com.example.note_taker_project.UI.list;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -28,9 +28,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void setDataWithRemoveItem(List<Note> notesList, int position) {
-        data = (ArrayList<Note>) notesList;
-        notifyItemRemoved(position);
+    public void deleteItem(Note note) {
+        String noteId = note.getId();
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getId().equals(noteId)) {
+                data.remove(i);
+                notifyItemRemoved(i);
+                return;
+            }
+        }
     }
 
     public Note getNote(int position) {

@@ -1,26 +1,21 @@
 package com.example.note_taker_project.UI;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.widget.Button;
 
-import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
-import com.example.note_taker_project.Domain.NoteRepository;
 import com.example.note_taker_project.R;
+import com.example.note_taker_project.UI.add.AddItemNoteFragment;
+import com.example.note_taker_project.UI.info.InfoItemNoteFragment;
+import com.example.note_taker_project.UI.list.NoteListFragment;
 
-public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private NoteAdapter adapter;
-    private NoteRepository noteRepository;
-    private NoteListener noteListener;
+public class MainActivity extends AppCompatActivity implements NoteListFragment.Controller, InfoItemNoteFragment.Controller, AddItemNoteFragment.Controller {
+    private Fragment noteListFragment;
+    private Fragment infoItemNoteFragment;
+    private Fragment addItemNoteFragment;
 
-    private Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,37 +23,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        noteListener = new NoteListener(this);
-        initRecycler();
-        addButton = findViewById(R.id.main_activity_add_button);
-        addButton.setOnClickListener(v -> {
-            noteListener.onAddNote();
-        });
-
+        if (savedInstanceState == null) {
+            noteListFragment = new NoteListFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_container, noteListFragment)
+                    .commit();
+        }
     }
 
-    private void initRecycler() {
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = App.get().adapter;
-        noteRepository = App.get().noteRepository;
-        adapter.setData(noteRepository.getNotes());
-        adapter.setOnClickListener(noteListener);
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-        recyclerView.setAdapter(adapter);
+    @Override
+    public void showNoteInfo(Note note) {
+        infoItemNoteFragment = InfoItemNoteFragment.newInstance(note);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, infoItemNoteFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
-    private final ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
+    @Override
+    public void saveNoteInfo() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, noteListFragment)
+                .commit();
+    }
 
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-            int index = viewHolder.getAdapterPosition();
-            noteRepository.deleteNote(noteRepository.getNotes().get(index));
-            adapter.setDataWithRemoveItem(noteRepository.getNotes(), index);
-        }
-    };
+
+    @Override
+    public void openAddNote() {
+        addItemNoteFragment = new AddItemNoteFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, addItemNoteFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void closeAddNote() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, noteListFragment)
+                .commit();
+    }
 }
