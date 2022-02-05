@@ -28,6 +28,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void setDataWithRemoveItem(List<Note> notesList, int position) {
+        data = (ArrayList<Note>) notesList;
+        notifyItemRemoved(position);
+    }
+
     public Note getNote(int position) {
         return data.get(position);
     }

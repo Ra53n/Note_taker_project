@@ -6,4 +6,7 @@ interface OnNoteListener {
     void onDeleteNote(Note note);
 
     void onClickNote(Note note);
+
+    void onAddNote();
+
 }

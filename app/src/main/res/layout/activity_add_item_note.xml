@@ -16,14 +16,14 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/info_note_name_textview"
+            android:id="@+id/add_note_name_textview"
             style="@style/note_name_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Название" />
 
         <EditText
-            android:id="@+id/info_note_text_textview"
+            android:id="@+id/add_note_text_textview"
             style="@style/note_content_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,15 +34,15 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/save_button"
-                style="@style/save_button"
+                android:id="@+id/add_button"
+                style="@style/add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_margin="@dimen/save_button_layout_margin" />
+                android:layout_margin="@dimen/add_button_layout_margin" />
 
             <TextView
-                android:id="@+id/info_note_date_textview"
+                android:id="@+id/add_note_date_textview"
                 style="@style/note_date_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

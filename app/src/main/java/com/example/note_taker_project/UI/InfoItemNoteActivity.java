@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
 
@@ -39,9 +40,9 @@ public class InfoItemNoteActivity extends AppCompatActivity {
     private void save(Note note) {
         ArrayList<Note> noteArrayList = new ArrayList<>();
         Note tempNote = updateNote();
-        MainActivity.noteRepository.saveNote(note, tempNote);
-        MainActivity.adapter.setData(noteArrayList);
-        MainActivity.adapter.notifyDataSetChanged();
+        App.get().noteRepository.saveNote(note, tempNote);
+        App.get().adapter.setData(noteArrayList);
+        App.get().adapter.notifyDataSetChanged();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
@@ -68,4 +69,5 @@ public class InfoItemNoteActivity extends AppCompatActivity {
         contentTextView.setText(note.getNoteText());
         dateTextView.setText(note.getNoteDate().toString());
     }
+
 }

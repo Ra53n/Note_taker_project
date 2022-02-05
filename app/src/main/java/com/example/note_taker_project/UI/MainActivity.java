@@ -1,21 +1,26 @@
 package com.example.note_taker_project.UI;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
-import com.example.note_taker_project.Data.CacheNoteRepositoryImpl;
+import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.Domain.NoteRepository;
 import com.example.note_taker_project.R;
 
 public class MainActivity extends AppCompatActivity {
-    protected static NoteRepository noteRepository = new CacheNoteRepositoryImpl();
     private RecyclerView recyclerView;
-    protected static NoteAdapter adapter;
+    private NoteAdapter adapter;
+    private NoteRepository noteRepository;
+    private NoteListener noteListener;
+
+    private Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,27 +28,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        noteListener = new NoteListener(this);
+        initRecycler();
+        addButton = findViewById(R.id.main_activity_add_button);
+        addButton.setOnClickListener(v -> {
+            noteListener.onAddNote();
+        });
+
+    }
+
+    private void initRecycler() {
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new NoteAdapter();
+        adapter = App.get().adapter;
+        noteRepository = App.get().noteRepository;
         adapter.setData(noteRepository.getNotes());
-        adapter.setOnClickListener(new NoteListener());
+        adapter.setOnClickListener(noteListener);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
     }
 
-    private class NoteListener implements OnNoteListener {
-
+    private final ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
-        public void onDeleteNote(Note note) {
-            noteRepository.deleteNote(note);
-            adapter.setData(noteRepository.getNotes());
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
         }
 
         @Override
-        public void onClickNote(Note note) {
-            Intent intent = new Intent(MainActivity.this, InfoItemNoteActivity.class);
-            intent.putExtra(InfoItemNoteActivity.NOTE_EXTRA_KEY, note);
-            startActivity(intent);
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+            int index = viewHolder.getAdapterPosition();
+            noteRepository.deleteNote(noteRepository.getNotes().get(index));
+            adapter.setDataWithRemoveItem(noteRepository.getNotes(), index);
         }
-    }
+    };
 }
