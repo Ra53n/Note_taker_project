@@ -38,29 +38,19 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
         infoItemNoteFragment = InfoItemNoteFragment.newInstance(note);
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.activity_main__second_fragment_container, infoItemNoteFragment)
+                .replace(R.id.activity_main__second_fragment_container, infoItemNoteFragment)
                 .addToBackStack(null)
                 .commit();
     }
-
-    @Override
-    public void saveNoteInfo() {
-        getSupportFragmentManager().popBackStack();
-    }
-
 
     @Override
     public void openAddNote() {
         addItemNoteFragment = new AddItemNoteFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.activity_main__second_fragment_container, addItemNoteFragment)
+                .replace(R.id.activity_main__second_fragment_container, addItemNoteFragment)
                 .addToBackStack(null)
                 .commit();
     }
 
-    @Override
-    public void closeAddNote() {
-        getSupportFragmentManager().popBackStack();
-    }
 }
