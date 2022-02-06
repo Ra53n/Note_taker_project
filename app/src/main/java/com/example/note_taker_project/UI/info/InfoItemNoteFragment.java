@@ -17,7 +17,6 @@ import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class InfoItemNoteFragment extends Fragment {
@@ -31,7 +30,8 @@ public class InfoItemNoteFragment extends Fragment {
     private Controller controller;
 
     public interface Controller {
-        void saveNoteInfo();
+
+        void showNoteInfo(Note note);
     }
 
     @Override
@@ -43,7 +43,6 @@ public class InfoItemNoteFragment extends Fragment {
     }
 
     public static InfoItemNoteFragment newInstance(Note note) {
-
         Bundle args = new Bundle();
         args.putParcelable(NOTE_ARG_KEY, note);
         InfoItemNoteFragment fragment = new InfoItemNoteFragment();
@@ -70,12 +69,10 @@ public class InfoItemNoteFragment extends Fragment {
     }
 
     private void save(Note note) {
-        ArrayList<Note> noteArrayList = new ArrayList<>();
         Note tempNote = updateNote();
         App.get().noteRepository.saveNote(note, tempNote);
-        App.get().adapter.setData(noteArrayList);
-        App.get().adapter.notifyDataSetChanged();
-        controller.saveNoteInfo();
+        App.get().adapter.setData(App.get().noteRepository.getNotes());
+        getParentFragmentManager().popBackStack();
     }
 
     private Note updateNote() {

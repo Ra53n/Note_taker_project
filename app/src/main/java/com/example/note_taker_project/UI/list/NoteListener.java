@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.UI.add.AddItemNoteFragment;
+import com.example.note_taker_project.UI.info.InfoItemNoteFragment;
 
 class NoteListener implements OnNoteListener {
 
@@ -22,7 +23,7 @@ class NoteListener implements OnNoteListener {
 
     @Override
     public void onClickNote(Note note) {
-        NoteListFragment.Controller controller = (NoteListFragment.Controller) context;
+        InfoItemNoteFragment.Controller controller = (InfoItemNoteFragment.Controller) context;
         controller.showNoteInfo(note);
     }
 
