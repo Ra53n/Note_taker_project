@@ -3,6 +3,7 @@ package com.example.note_taker_project.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,6 +13,8 @@ import com.example.note_taker_project.R;
 import com.example.note_taker_project.UI.add.AddItemNoteFragment;
 import com.example.note_taker_project.UI.info.InfoItemNoteFragment;
 import com.example.note_taker_project.UI.list.NoteListFragment;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements InfoItemNoteFragment.Controller, AddItemNoteFragment.Controller {
     private Fragment noteListFragment;
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
         infoItemNoteFragment = InfoItemNoteFragment.newInstance(note);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main__second_fragment_container, infoItemNoteFragment)
+                .add(R.id.activity_main__second_fragment_container, infoItemNoteFragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -50,19 +53,33 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
         addItemNoteFragment = new AddItemNoteFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main__second_fragment_container, addItemNoteFragment)
+                .add(R.id.activity_main__second_fragment_container, addItemNoteFragment)
                 .addToBackStack(null)
                 .commit();
     }
 
     @Override
     public void onBackPressed() {
-        if(backPressedCounter + 2000 > System.currentTimeMillis()){
-            super.onBackPressed();
-        } else {
-            Toast.makeText(this,"Нажмите еще раз для выхода!",Toast.LENGTH_LONG).show();
-            backPressedCounter = System.currentTimeMillis();
+        try {
+            if (infoItemNoteFragment.getClass().equals(getSupportFragmentManager().findFragmentById(R.id.activity_main__second_fragment_container).getClass())
+                    || addItemNoteFragment.getClass().equals(getSupportFragmentManager().findFragmentById(R.id.activity_main__second_fragment_container).getClass())) {
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_main__second_fragment_container),"При выходе данные не будут сохранены!",Snackbar.LENGTH_LONG);
+                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE);
+                snackbar.setAction("Выйти", snackView ->{
+                    super.onBackPressed();
+                });
+                snackbar.setTextColor(Color.BLACK);
+                snackbar.setActionTextColor(Color.BLUE);
+                snackbar.setBackgroundTint(Color.WHITE);
+                snackbar.show();
+            }
+        }catch (NullPointerException e){
+            if (backPressedCounter + 2000 > System.currentTimeMillis()) {
+                super.onBackPressed();
+            } else {
+                Toast.makeText(this, "Нажмите еще раз чтобы выйти!", Toast.LENGTH_LONG).show();
+                backPressedCounter = System.currentTimeMillis();
+            }
         }
-
     }
 }
