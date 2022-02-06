@@ -1,5 +1,6 @@
 package com.example.note_taker_project.UI;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
     private Fragment infoItemNoteFragment;
     private Fragment addItemNoteFragment;
     private long backPressedCounter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,21 +63,14 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
         try {
             if (infoItemNoteFragment.getClass().equals(getSupportFragmentManager().findFragmentById(R.id.activity_main__second_fragment_container).getClass())
                     || addItemNoteFragment.getClass().equals(getSupportFragmentManager().findFragmentById(R.id.activity_main__second_fragment_container).getClass())) {
-                Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_main__second_fragment_container),"При выходе данные не будут сохранены!",Snackbar.LENGTH_LONG);
-                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE);
-                snackbar.setAction("Выйти", snackView ->{
-                    super.onBackPressed();
-                });
-                snackbar.setTextColor(Color.BLACK);
-                snackbar.setActionTextColor(Color.BLUE);
-                snackbar.setBackgroundTint(Color.WHITE);
-                snackbar.show();
+                AlertDialogFragment alertDialogFragment = new AlertDialogFragment();
+                alertDialogFragment.show(getSupportFragmentManager(), "");
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             if (backPressedCounter + 2000 > System.currentTimeMillis()) {
                 super.onBackPressed();
             } else {
-                Toast.makeText(this, "Нажмите еще раз чтобы выйти!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Нажмите еще раз чтобы выйти", Toast.LENGTH_LONG).show();
                 backPressedCounter = System.currentTimeMillis();
             }
         }

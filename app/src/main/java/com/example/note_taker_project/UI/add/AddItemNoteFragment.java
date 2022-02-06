@@ -1,6 +1,7 @@
 package com.example.note_taker_project.UI.add;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
 
@@ -64,6 +66,10 @@ public class AddItemNoteFragment extends Fragment {
         note.setId(String.valueOf(App.get().noteRepository.getNotes().size() + 1));
         App.get().noteRepository.addNote(note);
         App.get().adapter.setData(App.get().noteRepository.getNotes());
+        Snackbar snackbar = Snackbar.make(view,"Заметка добавлена!",Snackbar.LENGTH_LONG);
+        snackbar.setTextColor(Color.BLACK);
+        snackbar.setBackgroundTint(Color.WHITE);
+        snackbar.show();
         getParentFragmentManager().popBackStack();
     }
 
