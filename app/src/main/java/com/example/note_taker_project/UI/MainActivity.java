@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
     private Fragment noteListFragment;
     private Fragment infoItemNoteFragment;
     private Fragment addItemNoteFragment;
+    private long backPressedCounter;
 
 
     @Override
@@ -53,4 +55,14 @@ public class MainActivity extends AppCompatActivity implements InfoItemNoteFragm
                 .commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        if(backPressedCounter + 2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+        } else {
+            Toast.makeText(this,"Нажмите еще раз для выхода!",Toast.LENGTH_LONG).show();
+            backPressedCounter = System.currentTimeMillis();
+        }
+
+    }
 }
