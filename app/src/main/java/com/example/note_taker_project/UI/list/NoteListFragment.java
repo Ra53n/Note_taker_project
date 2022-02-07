@@ -31,7 +31,6 @@ public class NoteListFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
     }
 
     @Nullable
