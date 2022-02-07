@@ -6,18 +6,16 @@
     android:orientation="vertical"
     tools:context=".UI.MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_notes_list__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_notes_list__recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="85" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fragment_notes_list__add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_weight="1"
-        android:text="@string/add_button_text" />
 
 </LinearLayout>

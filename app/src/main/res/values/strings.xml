@@ -3,4 +3,5 @@
     <string name="delete_button_text">x</string>
     <string name="save_button_text">save</string>
     <string name="add_button_text">Add</string>
+    <string name="toolbar_item_add">Добавить</string>
 </resources>

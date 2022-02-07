@@ -3,12 +3,15 @@ package com.example.note_taker_project.UI.list;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,10 +46,34 @@ public class NoteListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         noteListener = new NoteListener(getContext());
         initRecycler(view);
-        addButton = view.findViewById(R.id.fragment_notes_list__add_button);
-        addButton.setOnClickListener(v -> {
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        final Toolbar toolbar = getView().findViewById(R.id.fragment_notes_list__toolbar);
+        toolbar.setTitle("");
+        initMenu(toolbar);
+    }
+
+    private void initMenu(Toolbar toolbar) {
+        final MenuInflater menuInflater = getActivity().getMenuInflater();
+        final Menu menu = toolbar.getMenu();
+        menuInflater.inflate(R.menu.fragment_list_menu, menu);
+        menu.findItem(R.id.fragment_list_menu__menu_add).setOnMenuItemClickListener(item -> {
             noteListener.onAddNote();
+            return true;
         });
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_list_menu, menu);
     }
 
     private void initRecycler(View view) {
