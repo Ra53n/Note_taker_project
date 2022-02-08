@@ -60,6 +60,7 @@ public class Note implements Parcelable {
     }
 
     public Note() {
+        this.color = Color.YELLOW;
     }
 
     public String getNoteName() {

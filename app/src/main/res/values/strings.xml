@@ -12,4 +12,5 @@
     <string name="color_grey">Серый</string>
     <string name="fragment_info_item_note_menu_save">Сохранить</string>
     <string name="fragment_info_item_note_menu_change_color">Изменить цвет</string>
+    <string name="fragment_add_item_note_menu_add">Создать заметку</string>
 </resources>

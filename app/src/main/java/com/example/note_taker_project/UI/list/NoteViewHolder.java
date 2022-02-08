@@ -29,8 +29,8 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(v -> {
             onClickListener.onClickNote(note);
         });
-        itemView.setOnLongClickListener(v ->{
-            onLongNoteListener.onLongClickNote(note,itemView);
+        itemView.setOnLongClickListener(v -> {
+            onLongNoteListener.onLongClickNote(note, itemView);
             return true;
         });
         this.view = itemView;
@@ -42,7 +42,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         noteNameTextView.setText(note.getNoteName());
         noteTextTextView.setText(note.getNoteText());
         noteDateTextView.setText(note.getNoteDate().toString());
-        ((CardView)view).setCardBackgroundColor(note.getColor());
+        ((CardView) view).setCardBackgroundColor(note.getColor());
         deleteButton.setBackgroundColor(note.getColor());
     }
 

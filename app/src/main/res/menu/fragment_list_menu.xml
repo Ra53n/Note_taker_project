@@ -6,6 +6,5 @@
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:iconTint="@color/white"
         android:title="@string/toolbar_item_add"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 </menu>

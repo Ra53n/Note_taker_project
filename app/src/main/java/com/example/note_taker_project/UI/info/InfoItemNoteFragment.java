@@ -83,29 +83,29 @@ public class InfoItemNoteFragment extends Fragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private void initToolbar(){
+    private void initToolbar() {
         final Toolbar toolbar = getView().findViewById(R.id.fragment_info_item_note__toolbar);
         initMenu(toolbar);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private void initMenu(Toolbar toolbar){
+    private void initMenu(Toolbar toolbar) {
         final MenuInflater menuInflater = getActivity().getMenuInflater();
         final Menu menu = toolbar.getMenu();
-        menuInflater.inflate(R.menu.fragment_info_item_note_menu,menu);
-        menu.findItem(R.id.fragment_info_item_note_menu__save).setOnMenuItemClickListener(item ->{
+        menuInflater.inflate(R.menu.fragment_info_item_note_menu, menu);
+        menu.findItem(R.id.fragment_info_item_note_menu__save).setOnMenuItemClickListener(item -> {
             save(note);
             return true;
         });
-        menu.findItem(R.id.fragment_info_item_note_menu__change_color).setOnMenuItemClickListener(item ->{
+        menu.findItem(R.id.fragment_info_item_note_menu__change_color).setOnMenuItemClickListener(item -> {
             PopupMenu popupMenu = new PopupMenu(getContext(), toolbar, Gravity.RIGHT);
             popupMenu.setForceShowIcon(true);
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     NoteColorChanger noteColorChanger = new NoteColorChanger(note);
-                    boolean res =  noteColorChanger.changeNoteColor(item.getItemId(), note);
-                    ((CardView)getView()).setCardBackgroundColor(note.getColor());
+                    boolean res = noteColorChanger.changeNoteColor(item.getItemId(), note);
+                    ((CardView) getView()).setCardBackgroundColor(note.getColor());
                     return res;
                 }
             });
