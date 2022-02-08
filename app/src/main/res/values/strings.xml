@@ -4,4 +4,12 @@
     <string name="save_button_text">save</string>
     <string name="add_button_text">Add</string>
     <string name="toolbar_item_add">Добавить</string>
+    <string name="color_yellow">Желтый</string>
+    <string name="color_green">Зеленый</string>
+    <string name="color_pink">Розовый</string>
+    <string name="color_purple">Фиолетовый</string>
+    <string name="color_blue">Голубой</string>
+    <string name="color_grey">Серый</string>
+    <string name="fragment_info_item_note_menu_save">Сохранить</string>
+    <string name="fragment_info_item_note_menu_change_color">Изменить цвет</string>
 </resources>

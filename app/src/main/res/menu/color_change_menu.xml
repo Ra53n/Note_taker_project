@@ -6,36 +6,36 @@
         android:id="@+id/color_yellow"
         android:icon="@drawable/ic_round_fiber_manual_record_24"
         android:iconTint="@color/yellow"
-        android:title="Желтый"
-        app:showAsAction="always" />
+        android:title="@string/color_yellow"
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/color_green"
         android:icon="@drawable/ic_round_fiber_manual_record_24"
         android:iconTint="@color/green"
-        android:title="Зеленый"
-        app:showAsAction="always" />
+        android:title="@string/color_green"
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/color_pink"
         android:icon="@drawable/ic_round_fiber_manual_record_24"
         android:iconTint="@color/pink"
-        android:title="Розовый"
-        app:showAsAction="always" />
+        android:title="@string/color_pink"
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/color_purple"
         android:icon="@drawable/ic_round_fiber_manual_record_24"
         android:iconTint="@color/purple"
-        android:title="Фиолетовый"
-        app:showAsAction="always" />
+        android:title="@string/color_purple"
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/color_blue"
         android:icon="@drawable/ic_round_fiber_manual_record_24"
         android:iconTint="@color/blue"
-        android:title="Голубой"
-        app:showAsAction="always" />
+        android:title="@string/color_blue"
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/color_grey"
         android:icon="@drawable/ic_round_fiber_manual_record_24"
         android:iconTint="@color/grey"
-        android:title="Серый"
-        app:showAsAction="always" />
+        android:title="@string/color_grey"
+        app:showAsAction="collapseActionView" />
 </menu>

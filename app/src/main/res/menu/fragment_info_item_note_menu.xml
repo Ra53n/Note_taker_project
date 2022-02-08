@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/fragment_info_item_note_menu__save"
+        android:title="@string/fragment_info_item_note_menu_save"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/fragment_info_item_note_menu__change_color"
+        android:title="@string/fragment_info_item_note_menu_change_color"
+        app:showAsAction="never"
+        />
+</menu>

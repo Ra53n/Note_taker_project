@@ -11,15 +11,27 @@
     app:contentPadding="@dimen/note_card_view_content_padding"
     android:clickable="true">
 
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragment_info_item_note__toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_info_item_note__linear_layout"/>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/fragment_info_item_note__linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/fragment_info_item_note__toolbar"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <EditText

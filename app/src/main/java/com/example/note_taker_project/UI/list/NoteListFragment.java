@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +21,7 @@ import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.Domain.NoteRepository;
 import com.example.note_taker_project.R;
+import com.example.note_taker_project.UI.Color;
 
 public class NoteListFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -50,7 +52,9 @@ public class NoteListFragment extends Fragment {
 
     private void initToolbar() {
         final Toolbar toolbar = getView().findViewById(R.id.fragment_notes_list__toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle("Заметки");
+        toolbar.setTitleMarginStart(60);
+        toolbar.setTitleTextColor(Color.GREY);
         initMenu(toolbar);
     }
 
