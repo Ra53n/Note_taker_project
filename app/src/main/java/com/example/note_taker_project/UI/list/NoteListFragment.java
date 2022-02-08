@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,8 +26,7 @@ public class NoteListFragment extends Fragment {
     private NoteAdapter adapter;
     private NoteRepository noteRepository;
     private NoteListener noteListener;
-
-    private Button addButton;
+    private LongNoteListener longNoteListener;
 
 
     @Override
@@ -45,6 +43,7 @@ public class NoteListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         noteListener = new NoteListener(getContext());
+        longNoteListener = new LongNoteListener(getContext());
         initRecycler(view);
         initToolbar();
     }
@@ -83,6 +82,7 @@ public class NoteListFragment extends Fragment {
         noteRepository = App.get().noteRepository;
         adapter.setData(noteRepository.getNotes());
         adapter.setOnClickListener(noteListener);
+        adapter.setOnLongNoteListener(longNoteListener);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
     }

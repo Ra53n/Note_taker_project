@@ -8,7 +8,8 @@
     app:cardBackgroundColor="@color/yellow"
     app:cardCornerRadius="@dimen/note_card_view_card_corner_radius"
     app:cardElevation="@dimen/fragment_info_item_note__card_view_card_elevation"
-    app:contentPadding="@dimen/note_card_view_content_padding">
+    app:contentPadding="@dimen/note_card_view_content_padding"
+    android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

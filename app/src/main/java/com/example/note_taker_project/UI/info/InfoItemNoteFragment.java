@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.note_taker_project.App;
@@ -74,7 +75,7 @@ public class InfoItemNoteFragment extends Fragment {
         Note tempNote = updateNote();
         App.get().noteRepository.saveNote(note, tempNote);
         App.get().adapter.setData(App.get().noteRepository.getNotes());
-        Snackbar snackbar = Snackbar.make(view,"Заметка сохранена!",Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(view, "Заметка сохранена!", Snackbar.LENGTH_LONG);
         snackbar.setTextColor(Color.BLACK);
         snackbar.setBackgroundTint(Color.WHITE);
         snackbar.show();
@@ -87,6 +88,7 @@ public class InfoItemNoteFragment extends Fragment {
         tempNote.setNoteName(nameTextView.getText().toString());
         tempNote.setNoteText(contentTextView.getText().toString());
         tempNote.setNoteDate(new Date(System.currentTimeMillis()));
+        tempNote.setColor(note.getColor());
         return tempNote;
     }
 
@@ -101,5 +103,6 @@ public class InfoItemNoteFragment extends Fragment {
         nameTextView.setText(note.getNoteName());
         contentTextView.setText(note.getNoteText());
         dateTextView.setText(note.getNoteDate().toString());
+        ((CardView) view).setCardBackgroundColor(note.getColor());
     }
 }
