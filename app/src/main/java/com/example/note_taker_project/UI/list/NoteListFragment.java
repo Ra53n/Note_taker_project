@@ -3,12 +3,14 @@ package com.example.note_taker_project.UI.list;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,14 +20,14 @@ import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.Domain.NoteRepository;
 import com.example.note_taker_project.R;
+import com.example.note_taker_project.UI.Color;
 
 public class NoteListFragment extends Fragment {
     private RecyclerView recyclerView;
     private NoteAdapter adapter;
     private NoteRepository noteRepository;
     private NoteListener noteListener;
-
-    private Button addButton;
+    private LongNoteListener longNoteListener;
 
 
     @Override
@@ -42,11 +44,38 @@ public class NoteListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         noteListener = new NoteListener(getContext());
+        longNoteListener = new LongNoteListener(getContext());
         initRecycler(view);
-        addButton = view.findViewById(R.id.fragment_notes_list__add_button);
-        addButton.setOnClickListener(v -> {
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        final Toolbar toolbar = getView().findViewById(R.id.fragment_notes_list__toolbar);
+        toolbar.setTitle("Заметки");
+        toolbar.setTitleMarginStart(60);
+        toolbar.setTitleTextColor(Color.GREY);
+        initMenu(toolbar);
+    }
+
+    private void initMenu(Toolbar toolbar) {
+        final MenuInflater menuInflater = getActivity().getMenuInflater();
+        final Menu menu = toolbar.getMenu();
+        menuInflater.inflate(R.menu.fragment_list_menu, menu);
+        menu.findItem(R.id.fragment_list_menu__menu_add).setOnMenuItemClickListener(item -> {
             noteListener.onAddNote();
+            return true;
         });
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_list_menu, menu);
     }
 
     private void initRecycler(View view) {
@@ -56,6 +85,7 @@ public class NoteListFragment extends Fragment {
         noteRepository = App.get().noteRepository;
         adapter.setData(noteRepository.getNotes());
         adapter.setOnClickListener(noteListener);
+        adapter.setOnLongNoteListener(longNoteListener);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
     }

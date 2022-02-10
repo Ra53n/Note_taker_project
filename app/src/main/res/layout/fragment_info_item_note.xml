@@ -5,21 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/info_note_card_view_layout_margin"
+    android:clickable="true"
+    android:focusable="true"
     app:cardBackgroundColor="@color/yellow"
     app:cardCornerRadius="@dimen/note_card_view_card_corner_radius"
     app:cardElevation="@dimen/fragment_info_item_note__card_view_card_elevation"
     app:contentPadding="@dimen/note_card_view_content_padding">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragment_info_item_note__toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/fragment_info_item_note__linear_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/fragment_info_item_note__linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_info_item_note__toolbar">
 
             <EditText
                 android:id="@+id/fragment_info_item_note__name_textview"

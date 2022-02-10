@@ -3,6 +3,9 @@ package com.example.note_taker_project.Domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
+import com.example.note_taker_project.UI.Color;
+
 import java.util.Date;
 
 public class Note implements Parcelable {
@@ -10,6 +13,11 @@ public class Note implements Parcelable {
     private String noteName;
     private String noteText;
     private Date noteDate;
+    private int color;
+
+    public int getColor() {
+        return color;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -20,6 +28,11 @@ public class Note implements Parcelable {
         noteName = in.readString();
         noteText = in.readString();
         noteDate = new Date(in.readString());
+        color = in.readInt();
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -43,9 +56,11 @@ public class Note implements Parcelable {
         this.noteName = noteName;
         this.noteText = noteText;
         this.noteDate = noteDate;
+        this.color = Color.YELLOW;
     }
 
     public Note() {
+        this.color = Color.YELLOW;
     }
 
     public String getNoteName() {
@@ -83,5 +98,6 @@ public class Note implements Parcelable {
         dest.writeString(noteName);
         dest.writeString(noteText);
         dest.writeString(noteDate.toString());
+        dest.writeInt(color);
     }
 }

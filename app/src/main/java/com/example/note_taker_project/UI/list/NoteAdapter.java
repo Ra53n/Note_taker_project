@@ -17,7 +17,11 @@ import java.util.List;
 public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     private ArrayList<Note> data;
     private OnNoteListener onClickListener;
+    private OnLongNoteListener onLongNoteListener;
 
+    public void setOnLongNoteListener(OnLongNoteListener onLongNoteListener) {
+        this.onLongNoteListener = onLongNoteListener;
+    }
 
     public void setOnClickListener(OnNoteListener onClickListener) {
         this.onClickListener = onClickListener;
@@ -48,7 +52,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View itemView = inflater.inflate(R.layout.item_note, parent, false);
-        return new NoteViewHolder(itemView, onClickListener);
+        return new NoteViewHolder(itemView, onClickListener, onLongNoteListener);
     }
 
     @Override
