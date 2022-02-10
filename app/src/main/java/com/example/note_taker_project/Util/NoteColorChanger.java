@@ -1,4 +1,4 @@
-package com.example.note_taker_project.UI;
+package com.example.note_taker_project.Util;
 
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;

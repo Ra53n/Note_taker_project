@@ -1,17 +1,21 @@
 package com.example.note_taker_project.UI.list;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
@@ -29,6 +33,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
     public void setData(List<Note> notesList) {
         data = (ArrayList<Note>) notesList;
+        Collections.sort(data, new Comparator<Note>() {
+            @Override
+            public int compare(Note o1, Note o2) {
+                return o1.getNoteDate().compareTo(o2.getNoteDate());
+            }
+        });
         notifyDataSetChanged();
     }
 

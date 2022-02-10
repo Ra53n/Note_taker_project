@@ -20,7 +20,7 @@ import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.Domain.NoteRepository;
 import com.example.note_taker_project.R;
-import com.example.note_taker_project.UI.Color;
+import com.example.note_taker_project.Util.Color;
 
 public class NoteListFragment extends Fragment {
     private RecyclerView recyclerView;

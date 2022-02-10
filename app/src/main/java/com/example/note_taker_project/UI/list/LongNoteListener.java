@@ -11,7 +11,7 @@ import androidx.annotation.RequiresApi;
 
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
-import com.example.note_taker_project.UI.NoteColorChanger;
+import com.example.note_taker_project.Util.NoteColorChanger;
 
 public class LongNoteListener implements OnLongNoteListener {
 

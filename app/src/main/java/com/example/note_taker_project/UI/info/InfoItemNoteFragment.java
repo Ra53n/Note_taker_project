@@ -26,7 +26,7 @@ import androidx.fragment.app.Fragment;
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
-import com.example.note_taker_project.UI.NoteColorChanger;
+import com.example.note_taker_project.Util.NoteColorChanger;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
