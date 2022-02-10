@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
+import com.example.note_taker_project.UI.Counter.StartCounterFragment;
 import com.example.note_taker_project.UI.add.AddItemNoteFragment;
 import com.example.note_taker_project.UI.info.InfoItemNoteFragment;
 
@@ -31,6 +32,12 @@ class NoteListener implements OnNoteListener {
     public void onAddNote() {
         AddItemNoteFragment.Controller controller = (AddItemNoteFragment.Controller) context;
         controller.openAddNote();
+    }
+
+    @Override
+    public void onShowCounterInfo() {
+        StartCounterFragment.Controller controller = (StartCounterFragment.Controller) context;
+        controller.showCounterInfo();
     }
 
 }

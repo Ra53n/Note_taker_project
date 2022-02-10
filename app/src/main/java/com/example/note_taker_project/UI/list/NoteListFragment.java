@@ -65,6 +65,10 @@ public class NoteListFragment extends Fragment {
             noteListener.onAddNote();
             return true;
         });
+        menu.findItem(R.id.fragment_list_menu__menu_help).setOnMenuItemClickListener(item -> {
+            noteListener.onShowCounterInfo();
+            return true;
+        });
     }
 
     @Override

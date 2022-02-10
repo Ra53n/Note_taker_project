@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/fragment_list_menu__menu_help"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:iconTint="@color/white"
+        android:title="@string/toolbar_item_help"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/fragment_list_menu__menu_add"
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:iconTint="@color/white"

@@ -1,7 +1,6 @@
 package com.example.note_taker_project.Data;
 
 
-
 import android.os.Build;
 
 import androidx.annotation.NonNull;
