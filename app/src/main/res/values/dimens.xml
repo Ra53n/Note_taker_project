@@ -20,4 +20,5 @@
     <dimen name="info_note_card_view_layout_height">700sp</dimen>
     <dimen name="save_button_layout_margin">10sp</dimen>
     <dimen name="add_button_layout_margin">10sp</dimen>
+    <dimen name="fragment_start_counter_textview_text_size">100sp</dimen>
 </resources>

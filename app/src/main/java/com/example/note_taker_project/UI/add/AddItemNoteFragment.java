@@ -25,11 +25,12 @@ import androidx.fragment.app.Fragment;
 import com.example.note_taker_project.App;
 import com.example.note_taker_project.Domain.Note;
 import com.example.note_taker_project.R;
-import com.example.note_taker_project.UI.Color;
-import com.example.note_taker_project.UI.NoteColorChanger;
+import com.example.note_taker_project.Util.Color;
+import com.example.note_taker_project.Util.NoteColorChanger;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class AddItemNoteFragment extends Fragment {
     private Button addButton;
@@ -108,7 +109,7 @@ public class AddItemNoteFragment extends Fragment {
         this.note.setNoteName(nameTextView.getText().toString());
         this.note.setNoteText(contentTextView.getText().toString());
         this.note.setNoteDate(new Date(System.currentTimeMillis()));
-        this.note.setId(String.valueOf(App.get().noteRepository.getNotes().size() + 1));
+        this.note.setId(UUID.randomUUID().toString());
         App.get().noteRepository.addNote(note);
         this.note = new Note();
         App.get().adapter.setData(App.get().noteRepository.getNotes());

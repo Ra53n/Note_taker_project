@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-import com.example.note_taker_project.UI.Color;
+import com.example.note_taker_project.Util.Color;
 
 import java.util.Date;
 

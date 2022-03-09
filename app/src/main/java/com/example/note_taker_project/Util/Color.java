@@ -1,4 +1,4 @@
-package com.example.note_taker_project.UI;
+package com.example.note_taker_project.Util;
 
 public class Color {
     public final static int YELLOW = 0xFFF3F2B2;

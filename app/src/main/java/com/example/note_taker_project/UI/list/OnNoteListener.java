@@ -9,4 +9,6 @@ interface OnNoteListener {
 
     void onAddNote();
 
+    void onShowCounterInfo();
+
 }
